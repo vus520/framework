@@ -137,7 +137,7 @@ class Redisd
         try {
             $result = $this->handler->$func($host, $port, $this->options['timeout']);
             if($result === false) {
-                $this->handler->getLastError();
+                throw new \RedisException($this->handler->getLastError());
             }
 
             if (null != $this->options['password']) {
